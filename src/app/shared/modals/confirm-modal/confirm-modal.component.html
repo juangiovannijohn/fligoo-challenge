@@ -1,0 +1,35 @@
+<div class="modal-header" [ngClass]="modalClass">
+  <h4 class="modal-title" id="modal-title">
+    <i class="fas fa-exclamation-triangle me-2" *ngIf="type === 'danger'"></i>
+    <i class="fas fa-exclamation-circle me-2" *ngIf="type === 'warning'"></i>
+    <i class="fas fa-info-circle me-2" *ngIf="type === 'info'"></i>
+    <i class="fas fa-check-circle me-2" *ngIf="type === 'success'"></i>
+    {{ title }}
+  </h4>
+  <button 
+    type="button" 
+    class="btn-close" 
+    aria-label="Close" 
+    (click)="onClose()">
+  </button>
+</div>
+
+<div class="modal-body">
+  <p class="modal-message">{{ message }}</p>
+</div>
+
+<div class="modal-footer">
+  <button 
+    type="button" 
+    class="btn btn-secondary" 
+    (click)="onCancel()">
+    {{ cancelText }}
+  </button>
+  <button 
+    type="button" 
+    class="btn" 
+    [ngClass]="confirmButtonClass"
+    (click)="onConfirm()">
+    {{ confirmText }}
+  </button>
+</div>

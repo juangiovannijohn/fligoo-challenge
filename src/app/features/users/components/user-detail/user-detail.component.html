@@ -1,0 +1,149 @@
+<div class="container">
+    <div class="page-header mb-3">
+      <div class="d-flex align-items-center justify-content-between">
+          <div>
+              <h1 class="d-flex align-items-center">
+                  <i class="bi bi-people-fill me-3 text-primary"></i>
+                  Detalle de Usuario
+              </h1>
+            </div>
+            
+          </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+          <button type="button" class="btn btn-secondary btn-sm px-4" (click)="goBack()">
+           <i class="bi bi-arrow-left me-2"></i>
+            Volver
+          </button>
+        </div>
+    </div>
+
+  <div *ngIf="loading" class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <div *ngIf="!loading && !user" class="text-center">
+    <app-empty-state 
+      [title]="'Usuario no encontrado'"
+      [detailText]="'El usuario que buscas no existe o ha sido eliminado.'"
+      >
+    </app-empty-state>
+  </div>
+
+  <div *ngIf="!loading && user" class="row m-auto" style="max-width: 800px;">
+    <form [formGroup]="userForm" novalidate>
+      <div class="mb-3">
+        <div class="text-center">
+          <img [src]="user.avatar" alt="Avatar" class="img-fluid rounded-circle" style="width: 200px; height: 200px;">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="firstName" class="form-label">Nombre <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-person"></i>
+          </span>
+          <input 
+            type="text" 
+            class="form-control"
+            [class.is-invalid]="firstName?.invalid && (firstName?.dirty || firstName?.touched)"
+            [class.is-valid]="firstName?.valid && (firstName?.dirty || firstName?.touched)"
+            id="firstName" 
+            formControlName="first_name"
+            placeholder="Ingresa el nombre"
+             >
+        </div>
+        <div class="invalid-feedback" *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
+          {{ getErrorMessage('first_name') }}
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Apellido <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-person-badge"></i>
+          </span>
+          <input 
+            type="text" 
+            class="form-control"
+            [class.is-invalid]="lastName?.invalid && (lastName?.dirty || lastName?.touched)"
+            [class.is-valid]="lastName?.valid && (lastName?.dirty || lastName?.touched)"
+            id="lastName" 
+            formControlName="last_name"
+            placeholder="Ingresa el apellido"
+             >
+        </div>
+        <div class="invalid-feedback" *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
+          {{ getErrorMessage('last_name') }}
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-envelope"></i>
+          </span>
+          <input 
+            type="email" 
+            class="form-control"
+            [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)"
+            [class.is-valid]="email?.valid && (email?.dirty || email?.touched)"
+            id="email" 
+            formControlName="email"
+            placeholder="ejemplo@correo.com"
+             >
+        </div>
+        <div class="invalid-feedback" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+          {{ getErrorMessage('email') }}
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="avatar" class="form-label">Avatar (URL de imagen)</label>
+        <div class="input-group">
+          <span class="input-group-text">
+            <i class="bi bi-image"></i>
+          </span>
+          <input 
+            type="url" 
+            class="form-control"
+            [class.is-invalid]="avatar?.invalid && (avatar?.dirty || avatar?.touched)"
+            [class.is-valid]="avatar?.valid && (avatar?.dirty || avatar?.touched)"
+            id="avatar" 
+            formControlName="avatar"
+            placeholder="https://ejemplo.com/imagen.jpg"
+             >
+        </div>
+        <div class="invalid-feedback" *ngIf="avatar?.invalid && (avatar?.dirty || avatar?.touched)">
+          {{ getErrorMessage('avatar') }}
+        </div>
+        <div class="form-text">Opcional. Debe ser una URL válida de imagen (jpg, jpeg, png, gif, webp)</div>
+      </div>
+    </form>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-6 col-md-4 mb-2">
+          <button type="button" class="btn btn-primary w-100" (click)="onEdit()">
+            <i class="bi bi-pencil-fill me-2"></i>
+            Editar
+          </button>
+        </div>
+        <div class="col-6 col-md-4 mb-2">
+          <button type="button" class="btn btn-danger w-100" [disabled]="!isDisabled" (click)="onDelete()">
+            <i class="bi bi-trash-fill me-2"></i>
+            Eliminar
+          </button>
+        </div>
+        <div class="col-12 col-md-4 mb-2">
+          <button type="submit" class="btn btn-success w-100" (click)="onSubmit()" [disabled]="isDisabled">
+            <i class="bi bi-floppy-fill me-2"></i>
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

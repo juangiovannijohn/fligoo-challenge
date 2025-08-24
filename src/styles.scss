@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+$primary: #5d649e;       
+$secondary: #787373;     
+$success: #2b833f;       
+$info: #17a2b8;         
+$warning: #ffc107;       
+$danger: #d04351;
+$light: #f8f9fa; 
+$dark: #343a40;
+
+
+$body-bg: whitesmoke;
+$body-color: #3f3f3f;
+
+$btn-border-radius: 8px;
+$btn-font-weight: 600;
+
+@import 'bootstrap/scss/bootstrap';
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.btn i {
+  vertical-align: middle;
+}
+
+.text-success i { color: #198754; }
+.text-danger i { color: #dc3545; }
+.text-warning i { color: #ffc107; }
+.text-info i { color: #0dcaf0; }

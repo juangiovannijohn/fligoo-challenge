@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="mb-4">
+        <h1 class="d-flex align-items-center ">
+            <i class="bi bi-people-fill me-3 text-primary"></i>
+            Gestión de Usuarios
+        </h1>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12 col-md-4 mb-2">
+            <select class="form-select w-100" aria-label="Default select example" [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()">
+                <option disabled selected>Seleccionar usuarios por página</option>
+                <ng-container *ngFor="let item of itemsPerPageOptions">
+                    <option [value]="item">{{ item }} usuarios por página</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col-12 col-md-4 mb-2">
+            <app-search-box 
+            (searchTerm)="onSearch($event)"
+            [placeholder]="'Buscar usuario...'">
+            </app-search-box>
+        </div>
+        <div class="col-12 col-md-4 mb-2">
+            <button class="btn btn-primary w-100" type="button" (click)="onCreateUser()">
+                <i class="bi bi-person-plus-fill me-2"></i>
+                Nuevo Usuario
+            </button>
+        </div>
+    
+    </div>
+
+    <div class="text-center py-5" *ngIf="loading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    
+    <div class="text-center py-md-5" *ngIf="!loading && displayUsers.length === 0">
+        <app-empty-state
+            [title]="'No se encontraron usuarios'"
+            [detailText]="'Intenta buscar con otro término o crea uno nuevo'"  
+        ></app-empty-state>
+    </div>
+
+    <div *ngIf="!loading && displayUsers.length > 0">
+    
+        <app-card-grid 
+            [users]="displayUsers"
+            (editUser)="onEditUser($event)"
+            (deleteUser)="onDeleteUser($event)"
+            (viewUser)="onViewUser($event)">
+        </app-card-grid>
+    </div>
+
+    <div class="d-flex justify-content-center mt-4" *ngIf="!loading && displayUsers.length > 0">
+        <nav aria-label="Paginación de usuarios">
+            <div class="d-flex align-items-center gap-2">
+                <app-pagination 
+                    [currentPage]="currentPage"
+                    [totalPages]="totalPages"
+                    [pageSize]="itemsPerPage"
+                    [maxSize]="5"
+                    [boundaryLinks]="false"
+                    [rotate]="false"
+                    (pageChange)="onPageChange($event)">
+                </app-pagination>
+            </div>
+        </nav>
+    </div>
+</div>

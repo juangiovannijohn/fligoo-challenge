@@ -1,0 +1,11 @@
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3" *ngFor="let user of users">
+        <app-user-card 
+        class="d-flex justify-content-center"
+          [user]="user"
+          (onEdit)="handleEdit($event)"
+          (onDelete)="handleDelete($event)"
+          (onView)="handleView($event)">
+        </app-user-card>
+      </div>
+    </div>

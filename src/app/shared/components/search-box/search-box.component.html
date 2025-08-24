@@ -1,0 +1,22 @@
+<div class="w-100">
+  <div class="input-group">
+    <span class="input-group-text">
+      <i class="bi bi-search"></i>
+    </span>
+    <input 
+      type="text" 
+      [(ngModel)]="searchValue" 
+      (input)="onSearch()" 
+      [placeholder]="placeholder"
+      class="form-control"
+      autocomplete="off">
+    <button 
+      *ngIf="searchValue" 
+      class="btn btn-outline-secondary" 
+      type="button" 
+      (click)="onClear()"
+      title="Limpiar búsqueda">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+</div>
