@@ -1,27 +1,46 @@
-# FligooChallenge
+# Fligoo Challenge – User Management
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+Web application built with Angular 16 for managing users. It lets you list, create, edit, and delete users with a modern, responsive UI using Bootstrap 5.
 
-## Development server
+## Main Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- ✅ **User List** with pagination
+- ✅ **Real-time Search**
+- ✅ **Create New Users**
+- ✅ **Edit Existing Users**
+- ✅ **Delete Users with Confirmation**
+- ✅ **Detailed View** for each user
+- ✅ **Responsive Design** with Bootstrap 5
+- ✅ **Loading States** and Error Handling
 
-## Code scaffolding
+## Tech Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 16
+- Bootstrap 5
+- Bootstrap Icons
+- RxJS
+- TypeScript
 
-## Build
+## Installation & Local Run
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm or yarn
 
-## Running unit tests
+### Steps
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/juangiovannijohn/fligoo-challenge.git
+   cd fligoo-challenge
+   ```
+2. **Install dependencies**
+    ```bash
+    npm install
+    ```
+3. **Run the application**
+    ```bash
+    ng serve
+    ```
+4. **Open the browser**
+Navigate to http://localhost:4200/
